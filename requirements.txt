@@ -6,3 +6,4 @@ azure-monitor-opentelemetry
 azure-identity
 azure-keyvault-secrets
 pytest
+httpx2
