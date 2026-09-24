@@ -1,0 +1,6 @@
+requirements.txt text
+*.py text
+*.yml text
+*.yaml text
+*.tf text
+*.md text

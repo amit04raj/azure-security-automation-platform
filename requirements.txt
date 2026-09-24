@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+gunicorn
+jinja2
+azure-monitor-opentelemetry
+azure-identity
+azure-keyvault-secrets
+pytest

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility Hub</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <main class="container">
+
+        <header class="page-header">
+            <h1>Utility Hub</h1>
+            <p>Simple tools for everyday tasks.</p>
+        </header>
+
+        <!-- Calculator -->
+        <section class="utility-card calculator-card">
+            <div class="card-header">
+                <h2>Calculator</h2>
+                <p>Basic arithmetic calculations.</p>
+            </div>
+
+            <div class="calculator">
+                <div id="display" class="calculator-display">0</div>
+
+                <div class="calculator-keypad">
+                    <button
+                        class="calculator-button operator"
+                        onclick="clearDisplay()"
+                    >
+                        C
+                    </button>
+
+                    <button
+                        class="calculator-button operator"
+                        onclick="deleteLast()"
+                    >
+                        ⌫
+                    </button>
+
+                    <button
+                        class="calculator-button operator"
+                        onclick="calculatePercentage()"
+                    >
+                        %
+                    </button>
+
+                    <button
+                        class="calculator-button operator"
+                        onclick="chooseOperator('/')"
+                    >
+                        ÷
+                    </button>
+
+                    <button
+                        class="calculator-button"
+                        onclick="appendNumber('7')"
+                    >
+                        7
+                    </button>
+
+                    <button
+                        class="calculator-button"
+                        onclick="appendNumber('8')"
+                    >
+                        8
+                    </button>
+
+                    <button
+                        class="calculator-button"
+                        onclick="appendNumber('9')"
+                    >
+                        9
+                    </button>
+
+                    <button
+                        class="calculator-button operator"
+                        onclick="chooseOperator('*')"
+                    >
+                        ×
+                    </button>
+
+                    <button
+                        class="calculator-button"
+                        onclick="appendNumber('4')"
+                    >
+                        4
+                    </button>
+
+                    <button
+                        class="calculator-button"
+                        onclick="appendNumber('5')"
+                    >
+                        5
+                    </button>
+
+                    <button
+                        class="calculator-button"
+                        onclick="appendNumber('6')"
+                    >
+                        6
+                    </button>
+
+                    <button
+                        class="calculator-button operator"
+                        onclick="chooseOperator('-')"
+                    >
+                        −
+                    </button>
+
+                    <button
+                        class="calculator-button"
+                        onclick="appendNumber('1')"
+                    >
+                        1
+                    </button>
+
+                    <button
+                        class="calculator-button"
+                        onclick="appendNumber('2')"
+                    >
+                        2
+                    </button>
+
+                    <button
+                        class="calculator-button"
+                        onclick="appendNumber('3')"
+                    >
+                        3
+                    </button>
+
+                    <button
+                        class="calculator-button operator"
+                        onclick="chooseOperator('+')"
+                    >
+                        +
+                    </button>
+
+                    <button
+                        class="calculator-button zero"
+                        onclick="appendNumber('0')"
+                    >
+                        0
+                    </button>
+
+                    <button
+                        class="calculator-button"
+                        onclick="appendNumber('.')"
+                    >
+                        .
+                    </button>
+
+                    <button
+                        class="calculator-button equals"
+                        onclick="calculateResult()"
+                    >
+                        =
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- CIDR Calculator -->
+        <section class="utility-card">
+            <div class="card-header">
+                <h2>CIDR Calculator</h2>
+                <p>Calculate network and host information from an IPv4 CIDR block.</p>
+            </div>
+
+            <div class="input-action-row">
+                <div class="field-group">
+                    <label for="cidr-input">IPv4 CIDR</label>
+                    <input
+                        type="text"
+                        id="cidr-input"
+                        placeholder="192.168.1.0/24"
+                        autocomplete="off"
+                    >
+                </div>
+
+                <button id="cidr-calculate" class="primary-button">
+                    Calculate
+                </button>
+            </div>
+
+            <p id="cidr-error" class="error-message"></p>
+
+            <div id="cidr-result" class="result-panel hidden">
+                <div class="result-row">
+                    <span>Network</span>
+                    <strong id="cidr-network"></strong>
+                </div>
+
+                <div class="result-row">
+                    <span>Broadcast</span>
+                    <strong id="cidr-broadcast"></strong>
+                </div>
+
+                <div class="result-row">
+                    <span>Subnet Mask</span>
+                    <strong id="cidr-subnet-mask"></strong>
+                </div>
+
+                <div class="result-row">
+                    <span>Wildcard Mask</span>
+                    <strong id="cidr-wildcard-mask"></strong>
+                </div>
+
+                <div class="result-row">
+                    <span>First Host</span>
+                    <strong id="cidr-first-host"></strong>
+                </div>
+
+                <div class="result-row">
+                    <span>Last Host</span>
+                    <strong id="cidr-last-host"></strong>
+                </div>
+
+                <div class="result-row">
+                    <span>Total Addresses</span>
+                    <strong id="cidr-total-addresses"></strong>
+                </div>
+
+                <div class="result-row">
+                    <span>Usable Hosts</span>
+                    <strong id="cidr-usable-hosts"></strong>
+                </div>
+
+                <div class="result-row">
+                    <span>Prefix Length</span>
+                    <strong id="cidr-prefix-length"></strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- Unit Converter -->
+        <section class="utility-card">
+            <div class="card-header">
+                <h2>Unit Converter</h2>
+                <p>Convert common units for length, weight, temperature, and data.</p>
+            </div>
+
+            <div class="converter-grid">
+
+                <div class="field-group">
+                    <label for="converter-category">Category</label>
+                    <select id="converter-category">
+                        <option value="length">Length</option>
+                        <option value="weight">Weight</option>
+                        <option value="temperature">Temperature</option>
+                        <option value="data">Data</option>
+                    </select>
+                </div>
+
+                <div class="field-group">
+                    <label for="converter-value">Value</label>
+                    <input
+                        type="number"
+                        id="converter-value"
+                        placeholder="Enter value"
+                    >
+                </div>
+
+                <div class="field-group">
+                    <label for="converter-from">From</label>
+                    <select id="converter-from"></select>
+                </div>
+
+                <div class="conversion-arrow">→</div>
+
+                <div class="field-group">
+                    <label for="converter-to">To</label>
+                    <select id="converter-to"></select>
+                </div>
+
+                <button id="converter-calculate" class="primary-button">
+                    Convert
+                </button>
+
+            </div>
+
+            <p id="converter-error" class="error-message"></p>
+
+            <div id="converter-result" class="conversion-result hidden">
+                <span>Result</span>
+                <strong id="converter-result-value"></strong>
+            </div>
+        </section>
+
+        <!-- Quick Notes -->
+        <section class="utility-card">
+            <div class="card-header">
+                <h2>Quick Notes</h2>
+                <p>Keep a note while you're using Utility Hub.</p>
+            </div>
+
+            <div class="notes-editor">
+                <textarea
+                    id="note-input"
+                    placeholder="Write something..."
+                    rows="5"
+                ></textarea>
+
+                <div class="notes-actions">
+                    <span id="note-error" class="error-message"></span>
+                    <button id="save-note" class="primary-button">
+                        Save Note
+                    </button>
+                </div>
+            </div>
+
+            <div class="recent-notes">
+                <div class="recent-notes-header">
+                    <div>
+                        <h3>Recent Notes</h3>
+                        <p>Notes are kept for this session only.</p>
+                    </div>
+                </div>
+
+                <div id="notes-list" class="notes-list">
+                    <p id="no-notes" class="empty-notes">
+                        No notes yet.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
